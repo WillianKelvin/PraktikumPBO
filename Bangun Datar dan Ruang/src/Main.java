@@ -1,0 +1,125 @@
+//Willian Kelvin Nata
+//123180004
+
+import java.util.Scanner;
+import datar.*;
+import ruang.*;
+
+public class Main {
+  public static void main(final String[] args) {
+
+    Persegi persegi = new Persegi();
+    Segitiga segitiga = new Segitiga();
+    Balok balok = new Balok();
+    Kubus kubus = new Kubus();
+    Limas limas = new Limas();
+    Tabung tabung = new Tabung();
+
+    int pilih, sisiPersegi, keliling;
+    int sisiSegitiga, tinggi, alas;
+    float luas,pjg;
+    double volume, luasalas;
+    int panjang, lebar, sisiKubus;
+    float diameter,jari,t;
+    char piliha, kembali = 0;
+
+    Scanner scanInput = new Scanner(System.in);
+
+    do {
+      System.out.println("::::: Menu :::::");
+      System.out.println("1. Bangun Datar");
+      System.out.println("2. Bangun Ruang");
+      System.out.print("Pilih : ");
+      pilih = scanInput.nextInt();
+      switch (pilih) {
+      case 1:
+        System.out.println("\n::::: Bangun Datar :::::");
+        System.out.println("a. Persegi");
+        System.out.println("b. Segitiga");
+        System.out.print("Pilih : ");
+        piliha = scanInput.next().charAt(0);
+        switch (piliha) {
+        case 'a':
+          System.out.println("\n::::: Persegi :::::");
+          System.out.print("Input Sisi : ");
+          sisiPersegi = scanInput.nextInt();
+          keliling = persegi.kelilingPersegi(sisiPersegi);
+          luas = persegi.luasPersegi(sisiPersegi);
+          System.out.println("Keliling Persegi : " + keliling);
+          System.out.println("Luas Persegi : " + luas);
+          break;
+        case 'b':
+          System.out.println("\n::::: Segitiga :::::");
+          System.out.print("Input Sisi : ");
+          sisiSegitiga = scanInput.nextInt();
+          System.out.print("Input Tinggi : ");
+          tinggi = scanInput.nextInt();
+          System.out.print("Input Alas : ");
+          alas = scanInput.nextInt();
+          keliling = segitiga.kelilingSegitiga(sisiSegitiga);
+          luas = segitiga.luasSegitiga(tinggi, alas);
+          System.out.println("Keliling Segitiga : " + keliling);
+          System.out.println("Luas Segitiga : " + luas);
+          break;
+        }
+        break;
+      case 2:
+        System.out.println("\n::::: Bangun Ruang :::::");
+        System.out.println("a. Balok");
+        System.out.println("b. Kubus");
+        System.out.println("c. Limas");
+        System.out.println("d.Tabung");
+        System.out.print("Pilih : ");
+        piliha = scanInput.next().charAt(0);
+        switch (piliha) {
+        case 'a':
+          System.out.println("\n::::: Balok :::::");
+          System.out.print("Input Panjang : ");
+          panjang = scanInput.nextInt();
+          System.out.print("Input Lebar : ");
+          lebar = scanInput.nextInt();
+          System.out.print("Input Tinggi : ");
+          tinggi = scanInput.nextInt();
+          volume = balok.volumeBalok(panjang, lebar, tinggi);
+          luasalas = balok.luasAlas(panjang, lebar);
+          System.out.println("Volume Balok : " + volume);
+          System.out.println("Luas Alas : " + luasalas);
+          break;
+        case 'b':
+          System.out.println("\n::::: Kubus :::::");
+          System.out.print("Input sisi : ");
+          sisiKubus = scanInput.nextInt();
+          volume = kubus.volumeKubus(sisiKubus);
+          luasalas = kubus.luasAlas(sisiKubus);
+          System.out.println("Volume Kubus : " + volume);
+          System.out.println("Luas Alas : " + luasalas);
+          break;
+          case 'c':
+            System.out.println("\n:::::Limas Segi Empat :::::");
+            System.out.print("Input panjang Limas : ");
+            pjg = scanInput.nextInt();
+            System.out.print("Input tinggi limas : ");
+            tinggi = scanInput.nextInt();
+            System.out.print("Input lebar limas : ");
+            lebar = scanInput.nextInt();
+            volume = limas.VolumeLimas(pjg,lebar,tinggi);
+            System.out.println("Volume Limas : " + volume);
+            break;
+          case 'd':
+            System.out.println("\n:::: Tabung ::::");
+            System.out.print("Input diameter tabung : ");
+            diameter = scanInput.nextFloat();
+            //jari = diameter/2;
+            System.out.print("Masukkan tinggi tabung : ");
+            t = scanInput.nextFloat();
+            volume = tabung.VolumeTabung(diameter,t);
+            System.out.println("Volume Tabung : "+volume);
+        }
+        break;
+      }
+      System.out.print("\nKembali? : ");
+      kembali = scanInput.next().charAt(0);
+      System.out.println("\n");
+    } while (kembali == 'y');
+  }
+}
